@@ -17,8 +17,8 @@ def index():
             img = qrcode.make(link)
             qr_filename = "last_generated.png"
             img.save(os.path.join(QR_FOLDER, qr_filename))
-
     return render_template('index.html', qr_image=qr_filename)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
