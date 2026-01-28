@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap QR Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card glass-card shadow-lg p-4">
+                    <div class="card-body text-center">
+                        <h1 class="display-5 fw-bold mb-3">QR <span class="text-warning">GEN</span></h1>
+                        <p class="mb-4">Enter a URL to generate a colorful QR code</p>
+                        
+                        <form method="POST" class="needs-validation">
+                            <div class="mb-3">
+                                <input type="url" name="url" class="form-control form-control-lg custom-input" placeholder="https://example.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-light btn-lg w-100 fw-bold glow-button">GENERATE</button>
+                        </form>
+
+                        {% if qr_image %}
+                        <div class="mt-4 p-3 bg-white rounded-4 shadow-sm d-inline-block animate-pop">
+                            <img src="{{ url_for('static', filename='qr_codes/' + qr_image) }}" class="img-fluid rounded" alt="QR Code">
+                            <p class="text-dark mt-2 mb-0 fw-bold">Ready to scan!</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
